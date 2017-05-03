@@ -6,19 +6,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Document(collection = "users")
 public class User {
+    public User(){}
     public User(int id, String username, String password, String fio, String bornDate) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.fio = fio;
-        this.registerDate = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance());
+        this.registerDate = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
         this.bornDate = bornDate;
         this.rating = 0;
         this.commentaries = new ArrayList<UserCommentary>();
+        this.userCommentaries = new ArrayList<>();
+        this.orderCommentaries = new ArrayList<>();
     }
 
     @Id
@@ -29,7 +33,15 @@ public class User {
     private String registerDate;
     private String bornDate;
     private int rating;
+
+    // Commentaries to this user
     private List<UserCommentary> commentaries;
+
+    // Commentaries by this user
+    private List<UserCommentary> userCommentaries;
+
+    // Commentaries by this user to order
+    private List<OrderCommentary> orderCommentaries;
 
     public int getId() {
         return id;
@@ -93,5 +105,21 @@ public class User {
 
     public void setCommentaries(List<UserCommentary> commentaries) {
         this.commentaries = commentaries;
+    }
+
+    public List<UserCommentary> getUserCommentaries() {
+        return userCommentaries;
+    }
+
+    public void setUserCommentaries(List<UserCommentary> userCommentaries) {
+        this.userCommentaries = userCommentaries;
+    }
+
+    public List<OrderCommentary> getOrderCommentaries() {
+        return orderCommentaries;
+    }
+
+    public void setOrderCommentaries(List<OrderCommentary> orderCommentaries) {
+        this.orderCommentaries = orderCommentaries;
     }
 }

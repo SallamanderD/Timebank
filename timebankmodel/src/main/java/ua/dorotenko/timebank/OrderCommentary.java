@@ -5,13 +5,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 @Document(collection = "order_commentaries")
 public class OrderCommentary {
     public OrderCommentary(int id, String text, String createDate, User author, Order order) {
         this.id = id;
         this.text = text;
-        this.createDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance());
+        this.createDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
         this.author = author;
         this.rating = 0;
         this.order = order;

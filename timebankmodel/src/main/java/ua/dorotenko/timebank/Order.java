@@ -3,7 +3,9 @@ package ua.dorotenko.timebank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Document(collection = "orders")
@@ -12,6 +14,7 @@ public class Order {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.createDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
         this.tags = tags;
         this.author = author;
         this.isCompleted = isCompleted;
@@ -23,6 +26,7 @@ public class Order {
     private int id;
     private String name;
     private String description;
+    private String createDate;
     private List<Tag> tags;
     private User author;
     private boolean isCompleted;
@@ -51,6 +55,14 @@ public class Order {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 
     public List<Tag> getTags() {
