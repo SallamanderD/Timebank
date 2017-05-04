@@ -1,5 +1,6 @@
 package ua.dorotenko.timebank.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import ua.dorotenko.timebank.User;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Wrapper;
 import java.util.List;
 
@@ -15,6 +17,9 @@ import java.util.List;
 public class HomeController {
     private final String SERVER_URI = "http://localhost:6060/";
     RestTemplate restTemplate = new RestTemplate();
+
+    @Autowired
+    HttpSession httpSession;
 
     @RequestMapping("/index")
     public ModelAndView index(){

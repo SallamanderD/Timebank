@@ -8,7 +8,7 @@
 <c:choose>
     <c:when test="${not empty users}">
         <c:forEach var="listValue" items="${users}" varStatus="loop">
-            <p>${loop.index + 1} ${listValue.username}</p>
+            <p>${loop.index + 1}) ${listValue.username}</p>
         </c:forEach>
     </c:when>
     <c:otherwise>
