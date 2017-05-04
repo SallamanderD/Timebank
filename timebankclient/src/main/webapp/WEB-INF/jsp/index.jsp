@@ -3,6 +3,9 @@
 <html>
 <head>
     <title>Main Page</title>
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 <c:choose>
@@ -15,5 +18,6 @@
         Oops! Empty list.
     </c:otherwise>
 </c:choose>
+<button type="button" class="btn btn-default">asdasdasdc</button>
 </body>
 </html>
