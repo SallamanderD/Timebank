@@ -34,9 +34,11 @@ public class UserDao {
         update.set("fio", user.getFio());
         update.set("borndate", user.getBornDate());
         update.set("rating", user.getRating());
+        update.set("balance", user.getBalance());
         update.set("commentaries", user.getCommentaries());
         update.set("userCommentaries", user.getUserCommentaries());
         update.set("orderCommentaries", user.getOrderCommentaries());
+        update.set("preferTags", user.getPreferTags());
         mongoOperations.updateFirst(new Query()
                 .addCriteria(Criteria.where("id").is(id)), update, User.class);
     }

@@ -33,6 +33,7 @@ public class OrderDao {
         update.set("description", order.getDescription());
         update.set("tags", order.getTags());
         update.set("author", order.getAuthor());
+        update.set("count", order.getCount());
         update.set("isCompleted", order.isCompleted());
         update.set("executer", order.getExecuter());
         update.set("commentaries", order.getCommentaries());

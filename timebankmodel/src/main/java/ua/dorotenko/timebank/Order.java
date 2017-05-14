@@ -10,7 +10,8 @@ import java.util.List;
 
 @Document(collection = "orders")
 public class Order {
-    public Order(int id, String name, String description, List<Tag> tags, User author, boolean isCompleted, User executer) {
+    public Order() {}
+    public Order(int id, String name, String description, List<Tag> tags, User author, boolean isCompleted, User executer, int count) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -20,6 +21,7 @@ public class Order {
         this.isCompleted = isCompleted;
         this.executer = executer;
         this.commentaries = new ArrayList<OrderCommentary>();
+        this.count = count;
     }
 
     @Id
@@ -32,6 +34,7 @@ public class Order {
     private boolean isCompleted;
     private User executer;
     private List<OrderCommentary> commentaries;
+    private int count;
 
     public int getId() {
         return id;
@@ -103,5 +106,13 @@ public class Order {
 
     public void setCommentaries(List<OrderCommentary> commentaries) {
         this.commentaries = commentaries;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

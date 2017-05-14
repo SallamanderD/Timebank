@@ -9,7 +9,8 @@ import java.util.Date;
 
 @Document(collection = "order_commentaries")
 public class OrderCommentary {
-    public OrderCommentary(int id, String text, String createDate, User author, Order order) {
+    public OrderCommentary(){}
+    public OrderCommentary(int id, String text, User author, Order order) {
         this.id = id;
         this.text = text;
         this.createDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());

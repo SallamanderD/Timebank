@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "tags")
 public class Tag {
+    public Tag(){}
     public Tag(int id, String name) {
         this.id = id;
         this.name = name;
