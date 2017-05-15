@@ -17,9 +17,11 @@ public class HomeController {
     @Autowired
     TagDao tagDao;
     @Autowired
+    RoleDao roleDao;
+    @Autowired
     UserCommentaryDao userCommentaryDao;
     @Autowired
-    OrderCommentaryDAO orderCommentaryDAO;
+    OrderCommentaryDao orderCommentaryDao;
     @Autowired
     DbEmulator dbEmulator;
     @RequestMapping("/emul")
@@ -43,6 +45,10 @@ public class HomeController {
     @RequestMapping("/getUserById")
     public User getUserById(@RequestParam("id") int id){
         return userDao.findById(id);
+    }
+    @RequestMapping("/getRoleById")
+    public Role getRoleById(@RequestParam("id") int id){
+        return roleDao.findById(id);
     }
     @RequestMapping("/getOrderById")
     public Order getOrderById(@RequestParam("id") int id){
@@ -69,9 +75,28 @@ public class HomeController {
         return true;
     }
 
+    @RequestMapping(value = "/saveOrder", method = RequestMethod.POST)
+    public Boolean saveOrder(@RequestBody Order order){
+        orderDao.save(order);
+        return true;
+    }
+
+    @RequestMapping(value = "/getRoles")
+    public List<Role> getAllRoles(){
+        return roleDao.findAllRoles();
+    }
+
+
+
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     public Boolean updateUser(@RequestBody User user){
         userDao.update(user.getId(), user);
+        return true;
+    }
+
+    @RequestMapping(value = "/updateOrder", method = RequestMethod.POST)
+    public Boolean updateOrder(@RequestBody Order order){
+        orderDao.update(order.getId(), order);
         return true;
     }
 
@@ -82,7 +107,7 @@ public class HomeController {
 
     @RequestMapping("/getOrderCommentaries")
     public List<OrderCommentary> getOrderCommentaries(){
-        return orderCommentaryDAO.findAll();
+        return orderCommentaryDao.findAll();
     }
 
     @RequestMapping("/getUserCommentaryByAuthor")

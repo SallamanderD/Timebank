@@ -22,7 +22,6 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-left">
-                <li class="active"><a href="/feed">Лента</a></li>
                 <li class="active"><a href="/orders">Заказы</a></li>
                 <li class="active"><a href="/placeorder">Создать заказ</a></li>
             </ul>

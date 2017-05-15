@@ -17,25 +17,39 @@ public class DbEmulator {
     @Autowired
     UserCommentaryDao userCommentaryDao;
     @Autowired
-    OrderCommentaryDAO orderCommentaryDAO;
+    OrderCommentaryDao orderCommentaryDao;
+    @Autowired
+    RoleDao roleDao;
 
     public void emulate(){
-        User u = new User(1, "Sallamander", "Beeline1", "Dorotenko Aleksandr Vadimovich", "03.07.1997", 0);
+        String text1 =
+                "Задание - выгулять собаку в городе Харькове, Шевченковский район. Собачка добрая, ласковая, не агрессивная. Порода - лабрадор ретривер. Любит гоняться за палками и другими предметами, а также купаться. Собаку нужно выгуливать в течении двух часов. Отзывается на кличку Мартелл. Плачу 300 поинтов. Кто заинтересовался - просьба подписаться.";
+        roleDao.save(new Role(1, "Администратор"));
+        roleDao.save(new Role(2, "Пользователь"));
+        User u = new User(1, "Sallamander", "Beeline1", "Dorotenko Aleksandr Vadimovich", "03.07.1997", 999999, roleDao.findById(2));
         userDao.save(u);
-        u = new User(2, "UsagiBro", "1234321", "Zhazhky Ihor Ihorevich", "21.04.1997", 0);
+        u = new User(2, "UsagiBro", "1234321", "Zhazhky Ihor Ihorevich", "21.04.1997", 0, roleDao.findById(1));
         userDao.save(u);
         // ----------------------------------------------
         Tag t = new Tag(1, "Домашние животные");
         tagDao.save(t);
+        t = new Tag(2, "Уборка");
+        tagDao.save(t);
+        t = new Tag(3, "Дети");
+        tagDao.save(t);
+        t = new Tag(4, "Бассейн");
+        tagDao.save(t);
+        t = new Tag(5, "Покупки");
+        tagDao.save(t);
         Order o = new Order(
                 1,
                 "Выгул псины",
-                "Надо выгулять псину по кличке Кобра",
+                text1,
                 new ArrayList<Tag>(),
                 userDao.findById(1),
-                false,
                 null,
-                300
+                300,
+                true
         );
         o.getTags().add(tagDao.findById(1));
         orderDao.save(o);
@@ -44,7 +58,9 @@ public class DbEmulator {
         u = userDao.findById(2);
         u.getOrderCommentaries().add(orderCommentary);
         userDao.update(u.getId(), u);
-        orderCommentaryDAO.save(orderCommentary);
+        o.getCommentaries().add(orderCommentary);
+        orderDao.update(o.getId(), o);
+        orderCommentaryDao.save(orderCommentary);
         // --------------------------------------------------------------
     }
 }

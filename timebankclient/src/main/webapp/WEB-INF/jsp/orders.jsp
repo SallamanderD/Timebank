@@ -9,23 +9,37 @@
 </head>
 <body style="background-color: white">
 <jsp:include page="/navbar"></jsp:include>
-<div class="container">
+<div class="container" style="margin-top: 5%">
     <c:choose>
-        <c:when test="${not empty orders}">
-            <c:forEach var="listValue" items="${orders}" varStatus="loop">
-                <div style="background-color: white; padding: 5px">
-                    <h3>${loop.index + 1}) ${listValue.name}</h3>
-                    <p>${listValue.description}</p>
-                    <p>${listValue.createDate}</p>
-                    <p>Цена: ${listValue.count}</p>
-                    <p>Теги: <c:forEach var="tag" items="${listValue.tags}">${tag.name} </c:forEach></p>
-                </div>
+    <c:when test="${not empty orders}">
+    <div class="col-md-12">
+        <c:forEach var="listValue" items="${orders}" varStatus="loop">
+
+        <h1><a href="/order/${listValue.id}">${listValue.name}</a></h1>
+        <p>${listValue.description}</p>
+        <div>
+            <span class="badge"><span class="glyphicon glyphicon-calendar"
+                                      aria-hidden="true"></span> Размещен ${listValue.createDate}</span>
+            <div class="pull-right">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <a href="#">${listValue.author.username}</a>
+                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                    ${listValue.count}
+                <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                Теги:
+                <c:forEach var="tag" items="${listValue.tags}"><span
+                        class="label label-success">${tag.name}</span></c:forEach>
+            </div>
+
+            <hr>
             </c:forEach>
+        </div>
         </c:when>
         <c:otherwise>
             Oops! Empty list.
         </c:otherwise>
-    </c:choose>
+        </c:choose>
+    </div>
 </div>
 </body>
 </html>

@@ -34,7 +34,10 @@ public class OrderDao {
         update.set("tags", order.getTags());
         update.set("author", order.getAuthor());
         update.set("count", order.getCount());
-        update.set("isCompleted", order.isCompleted());
+        update.set("IsCompletedByAuthor", order.getIsCompletedByAuthor());
+        update.set("IsCompletedByExecuter", order.getIsCompletedByExecuter());
+        update.set("isCompleted", order.getIsCompleted());
+        update.set("possibleExecuters", order.getPossibleExecuters());
         update.set("executer", order.getExecuter());
         update.set("commentaries", order.getCommentaries());
         mongoOperations.updateFirst(new Query().addCriteria(Criteria.where("id").is(id)), update, Order.class);

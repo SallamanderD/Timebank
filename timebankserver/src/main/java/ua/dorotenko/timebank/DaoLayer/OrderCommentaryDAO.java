@@ -14,7 +14,7 @@ import ua.dorotenko.timebank.UserCommentary;
 import java.util.List;
 
 @Component
-public class OrderCommentaryDAO {
+public class OrderCommentaryDao {
     @Autowired
     private MongoOperations mongoOperations;
 
@@ -42,7 +42,6 @@ public class OrderCommentaryDAO {
         Update update = new Update();
         update.set("text", orderCommentary.getText());
         update.set("author", orderCommentary.getAuthor());
-        update.set("rating", orderCommentary.getRating());
         update.set("order", orderCommentary.getOrder());
         mongoOperations.updateFirst(new Query().addCriteria(Criteria.where("id").is(id)), update, OrderCommentary.class);
     }

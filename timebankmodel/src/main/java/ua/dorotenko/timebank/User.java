@@ -12,7 +12,7 @@ import java.util.List;
 @Document(collection = "users")
 public class User {
     public User(){}
-    public User(int id, String username, String password, String fio, String bornDate, int balance) {
+    public User(int id, String username, String password, String fio, String bornDate, int balance, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -25,6 +25,7 @@ public class User {
         this.orderCommentaries = new ArrayList<>();
         this.balance = balance;
         this.preferTags = new ArrayList<>();
+        this.role = role;
     }
 
     @Id
@@ -37,6 +38,8 @@ public class User {
     private int rating;
     private int balance;
     private List<Tag> preferTags;
+    private Role role;
+    private String aboutMe;
 
     // Commentaries to this user
     private List<UserCommentary> commentaries;
@@ -141,5 +144,21 @@ public class User {
 
     public void setPreferTags(List<Tag> preferTags) {
         this.preferTags = preferTags;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getAboutMe() {
+        return aboutMe;
+    }
+
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
     }
 }

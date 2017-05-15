@@ -15,7 +15,6 @@ public class OrderCommentary {
         this.text = text;
         this.createDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
         this.author = author;
-        this.rating = 0;
         this.order = order;
     }
 
@@ -24,7 +23,6 @@ public class OrderCommentary {
     private String text;
     private String createDate;
     private User author;
-    private int rating;
     private Order order;
 
     public int getId() {
@@ -57,14 +55,6 @@ public class OrderCommentary {
 
     public void setAuthor(User author) {
         this.author = author;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public Order getOrder() {

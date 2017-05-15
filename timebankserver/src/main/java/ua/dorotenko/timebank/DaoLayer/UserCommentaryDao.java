@@ -40,7 +40,6 @@ public class UserCommentaryDao {
         Update update = new Update();
         update.set("text", userCommentary.getText());
         update.set("author", userCommentary.getAuthor());
-        update.set("rating", userCommentary.getRating());
         update.set("user", userCommentary.getUser());
         mongoOperations.updateFirst(new Query().addCriteria(Criteria.where("id").is(id)), update, UserCommentary.class);
     }
