@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-/**
- * Created by Александр Доротенко on 15.05.2017.
- */
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

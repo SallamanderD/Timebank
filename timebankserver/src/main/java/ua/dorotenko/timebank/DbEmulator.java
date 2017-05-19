@@ -43,7 +43,7 @@ public class DbEmulator {
         tagDao.save(t);
         Order o = new Order(
                 1,
-                "Выгул псины",
+                "Выгулять собаку",
                 text1,
                 new ArrayList<Tag>(),
                 userDao.findById(1),

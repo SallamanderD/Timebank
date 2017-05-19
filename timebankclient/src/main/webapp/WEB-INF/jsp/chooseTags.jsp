@@ -25,6 +25,7 @@
     <form action="/chooseTags" method="post">
         <div class="form-group">
             <input type="text" id="tagString" name="tagString" class="form-control" readonly>
+            <br>
             <c:choose>
                 <c:when test="${not empty tags}">
                     <c:forEach var="listValue" items="${tags}" varStatus="loop">

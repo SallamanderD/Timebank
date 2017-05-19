@@ -61,6 +61,7 @@
                             <option value="${u.id}">${u.username}</option>
                         </c:forEach>
                     </select>
+                    <br>
                     <div class="form-group">
                         <button class="btn btn-success" type="button"
                                 onclick="post('/appoint', {orderId : ${order.id}, userId : document.getElementById('sel1').value})">
